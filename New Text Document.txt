@@ -1,0 +1,1 @@
+select AUTO_INCREMENT from information_schema.Tables where TABLE_SCHEMA="dipesh" and TABLE_NAME="user_details"
