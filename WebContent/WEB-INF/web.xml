@@ -49,4 +49,14 @@
     <servlet-name>Reset</servlet-name>
     <url-pattern>/Reset</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>This class registers new member in database.</description>
+    <display-name>Register</display-name>
+    <servlet-name>Register</servlet-name>
+    <servlet-class>edu.student.servlets.Register</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Register</servlet-name>
+    <url-pattern>/Register</url-pattern>
+  </servlet-mapping>
 </web-app>
