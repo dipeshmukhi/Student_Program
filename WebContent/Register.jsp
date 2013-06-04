@@ -19,7 +19,7 @@
 	<h4>${sessionScope.returnMessage}</h4>
 	<c:set var="returnMessage" value="" scope="session"></c:set>
 	<h2>Student Register</h2>
-	<form action="CheckRegister" method="post" id="login_form">
+	<form action="Register" method="post" id="login_form">
 	
 		<h4>First Name: <input type="text" name="txtFirstName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
 		<h4>Last Name: <input type="text" name="txtLastName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>

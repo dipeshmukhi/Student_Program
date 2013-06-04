@@ -20,6 +20,42 @@ public class Connect
 		lPassword="Dip_mukh99";
 	}
 	
+	public String getlDriver() {
+   	return lDriver;
+   }
+
+	public void setlDriver(String pLDriver) {
+   	lDriver = pLDriver;
+   }
+
+	public String getlURL() {
+   	return lURL;
+   }
+
+	public void setlURL(String pLURL) {
+   	lURL = pLURL;
+   }
+
+	public String getlUserName() {
+   	return lUserName;
+   }
+
+	public void setlUserName(String pLUserName) {
+   	lUserName = pLUserName;
+   }
+
+	public String getlPassword() {
+   	return lPassword;
+   }
+
+	public void setlPassword(String pLPassword) {
+   	lPassword = pLPassword;
+   }
+
+	public void setMyDataSource(DataSourceWrapper pMyDataSource) {
+   	myDataSource = pMyDataSource;
+   }
+	
 	public  DataSourceWrapper getMyDataSource()
 	{
 		
@@ -36,41 +72,6 @@ public class Connect
 			return myDataSource;
 		}
 		
-		return myDataSource;
-		
+		return myDataSource;		
 	}
 }
-		/*public void deadfunc()
-		{
-		Connection connection = null;
-		try
-		{
-			Class.forName("com.mysql.jdbc.Driver");
-		}
-		catch (ClassNotFoundException e)
-		{
-			e.printStackTrace();
-			return null;
-		}
-		
-		try
-		{
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Dipesh","root", "Dip_mukh99");
-			
-			if (connection != null)
-			{
-				return connection;
-			}
-			else
-			{
-				return null;
-			}
-			
-		}
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-			return null;
-		}
-	}*/
-
