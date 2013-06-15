@@ -33,12 +33,12 @@
 	<h4>${sessionScope.returnMessage}</h4>
 	<c:set var="returnMessage" value="" scope="session"></c:set>
 	<h2>Student Login</h2>
-	<form action="CheckLogin" method="post" id="login_form">
+	<form action="CheckLogin" method="post" id="LoginForm">
 		<h4>User Name: <input type="text" name="txtUserName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
 		<h4>Password: <input type="password" name="txtPassword" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
 		<button type="button" onclick="validate(this.form)">Submit</button>
 	</form>
-	<form action="Register.jsp" id=register_form>
+	<form action="Register.jsp" id=RegisterForm>
 		<button type="submit">Register</button>
 	</form>
 	<br>
