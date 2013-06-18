@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.taglibs.standard.tag.common.sql.DataSourceWrapper;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import edu.student.model.Connect;
 import edu.student.model.User;
@@ -42,6 +44,7 @@ public class CheckLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		HttpSession session = request.getSession();
+		ApplicationContext factory= new ClassPathXmlApplicationContext("spring.xml");
 		
 		String lUserName=request.getParameter("txtUserName");
 		String lPassword=request.getParameter("txtPassword");
@@ -73,18 +76,18 @@ public class CheckLogin extends HttpServlet {
 				lResultSet.first();
 				User currentUser=new User();
 				
-				currentUser.setlUserName(lResultSet.getString("User_Name"));
-				currentUser.setlFirstName(lResultSet.getString("First Name"));
-				currentUser.setlLastName(lResultSet.getString("Last Name"));
-				currentUser.setlEmailId(lResultSet.getString("Email"));
-				currentUser.setlPhone(lResultSet.getString("Phone"));
+				currentUser.setUserName(lResultSet.getString("User_Name"));
+				currentUser.setFirstName(lResultSet.getString("First Name"));
+				currentUser.setLastName(lResultSet.getString("Last Name"));
+				currentUser.setEmailId(lResultSet.getString("Email"));
+				currentUser.setPhone(lResultSet.getString("Phone"));
 				
 				String lUserType = lResultSet.getString("Type");				
 				
 				if(lUserType==null || lUserType.isEmpty())
 					lUserType="Student";
 				
-				currentUser.setlType(lUserType);				
+				currentUser.setType(lUserType);				
 				request.getSession().setAttribute("currentUser", currentUser);
 				
 				if(lUserType.equalsIgnoreCase("Student"))

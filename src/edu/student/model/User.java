@@ -3,87 +3,61 @@ package edu.student.model;
 public class User 
 {
 	private int lUserId;
-	private String lUserName;
-	private String lPassword;
-	private String lFirstName;
-	private String lLastName;
-	private String lEmailId;
-	private String lPhone;
-	private String lType;
+	private String userName;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private String emailId;
+	private String phone;
+	private String type;
 	
-	public User()
-	{
-		lUserId=0;
-		lUserName="";
-		lPassword="";
-		lFirstName="";
-		lLastName="";
-		lEmailId="";
-		lPhone="";
-		lType="";
-	}
-
 	public int getlUserId() {
    	return lUserId;
    }
-
 	public void setlUserId(int pLUserId) {
    	lUserId = pLUserId;
    }
-
-	public String getlUserName() {
-   	return lUserName;
+	public String getUserName() {
+   	return userName;
    }
-
-	public void setlUserName(String pLUserName) {
-   	lUserName = pLUserName;
+	public void setUserName(String pUserName) {
+   	userName = pUserName;
    }
-
-	public String getlPassword() {
-   	return lPassword;
+	public String getPassword() {
+   	return password;
    }
-
-	public void setlPassword(String pLPassword) {
-   	lPassword = pLPassword;
+	public void setPassword(String pPassword) {
+   	password = pPassword;
    }
-	
-	public String getlFirstName() {
-   	return lFirstName;
+	public String getFirstName() {
+   	return firstName;
    }
-
-	public void setlFirstName(String pLFirstName) {
-   	lFirstName = pLFirstName;
+	public void setFirstName(String pFirstName) {
+   	firstName = pFirstName;
    }
-
-	public String getlLastName() {
-   	return lLastName;
+	public String getLastName() {
+   	return lastName;
    }
-
-	public void setlLastName(String pLLastName) {
-   	lLastName = pLLastName;
+	public void setLastName(String pLastName) {
+   	lastName = pLastName;
    }
-
-	public String getlEmailId() {
-   	return lEmailId;
+	public String getEmailId() {
+   	return emailId;
    }
-
-	public void setlEmailId(String pLEmailId) {
-   	lEmailId = pLEmailId;
+	public void setEmailId(String pEmailId) {
+   	emailId = pEmailId;
    }
-
-	public String getlPhone() {
-   	return lPhone;
+	public String getPhone() {
+   	return phone;
    }
-
-	public void setlPhone(String pLPhone) {
-   	lPhone = pLPhone;
+	public void setPhone(String pPhone) {
+   	phone = pPhone;
    }
-	
-	public String getlType() {
-   	return lType;
+	public String getType() {
+   	return type;
    }
-	public void setlType(String pLType) {
-   	lType = pLType;
+	public void setType(String pType) {
+   	type = pType;
    }
 	
 }

@@ -16,18 +16,16 @@
 
 	<c:if test="${sessionScope.currentUser!=null}">
 		<c:choose>
-			<c:when test="${fn:toLowerCase(sessionScope.currentUser.lType)==\"student\"}">
-		       <c:redirect url="http://localhost:8090/Student_Program/Student/StudentMainPage.jsp"></c:redirect>
+			<c:when test="${fn:toLowerCase(sessionScope.currentUser.type)==\"student\"}">
+		       <jsp:forward page="<%=response.encodeURL(\"/Student/StudentMainPage.jsp\")%>"></jsp:forward>
 		   </c:when>
-		   <c:when test="${fn:toLowerCase(sessionScope.currentUser.lType)==\"professor\"}">
+		   <c:when test="${fn:toLowerCase(sessionScope.currentUser.type)==\"professor\"}">
 		       <jsp:forward page="<%=response.encodeURL(\"/temp.jsp\")%>"></jsp:forward>
 		   </c:when>
 		   <c:otherwise>
 		   </c:otherwise>
 		</c:choose>
 	</c:if>
-	
-	${sessionScope.currentUser.lType}
 	
 	<center>
 	<h4>${sessionScope.returnMessage}</h4>
