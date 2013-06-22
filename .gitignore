@@ -212,4 +212,5 @@ pip-log.txt
 .mr.developer.cfg
 
 #Dipesh Custom
-temp1.txt
+TomcatRuntimes/
+Servers/

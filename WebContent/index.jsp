@@ -13,7 +13,6 @@
 <title>Sign-in Page</title>
 </head>
 <body>
-
 	<c:if test="${sessionScope.currentUser!=null}">
 		<c:choose>
 			<c:when test="${fn:toLowerCase(sessionScope.currentUser.type)==\"student\"}">
