@@ -1,8 +1,16 @@
 package edu.student.model;
 
-public class User 
+import java.io.Serializable;
+
+public class User implements Serializable
 {
-	private int lUserId;
+	
+	/**
+    * 
+    */
+   private static final long serialVersionUID = 1L;
+   
+	private int userId;
 	private String userName;
 	private String password;
 	private String firstName;
@@ -11,11 +19,11 @@ public class User
 	private String phone;
 	private String type;
 	
-	public int getlUserId() {
-   	return lUserId;
+	public int getUserId() {
+   	return userId;
    }
-	public void setlUserId(int pLUserId) {
-   	lUserId = pLUserId;
+	public void setUserId(int pUserId) {
+   	userId = pUserId;
    }
 	public String getUserName() {
    	return userName;
@@ -59,5 +67,9 @@ public class User
 	public void setType(String pType) {
    	type = pType;
    }
+	public static long getSerialversionuid() {
+   	return serialVersionUID;
+   }
 	
+		
 }
