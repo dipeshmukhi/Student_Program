@@ -18,7 +18,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import edu.student.model.Connect;
-import edu.student.model.User;
+import edu.student.model.User.User;
 
 /**
  * Servlet implementation class CheckLogin

@@ -1,6 +1,7 @@
-package edu.student.model;
+package edu.student.model.User;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class User implements Serializable
 {
@@ -18,6 +19,11 @@ public class User implements Serializable
 	private String emailId;
 	private String phone;
 	private String type;
+	private Date lastModifiedDate;
+	
+	public static long getSerialversionuid() {
+   	return serialVersionUID;
+   }
 	
 	public int getUserId() {
    	return userId;
@@ -67,9 +73,11 @@ public class User implements Serializable
 	public void setType(String pType) {
    	type = pType;
    }
-	public static long getSerialversionuid() {
-   	return serialVersionUID;
+	public Date getLastModifiedDate() {
+   	return lastModifiedDate;
    }
-	
+	public void setLastModifiedDate(Date pLastModifiedDate) {
+   	lastModifiedDate = pLastModifiedDate;
+   }
 		
 }

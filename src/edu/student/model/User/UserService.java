@@ -1,6 +1,7 @@
-package edu.student.model;
+package edu.student.model.User;
 
 import java.util.List;
+
 
 public interface UserService 
 {
