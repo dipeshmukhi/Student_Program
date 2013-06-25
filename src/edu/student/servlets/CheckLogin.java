@@ -48,6 +48,7 @@ public class CheckLogin extends HttpServlet {
 		ApplicationContext factory= new ClassPathXmlApplicationContext("spring.xml");
 		SqlSessionFactoryBean sqlSessionFactory = (SqlSessionFactoryBean) factory.getBean("sqlSessionFactory");
 		
+		
 		String lUserName=request.getParameter("txtUserName");
 		String lPassword=request.getParameter("txtPassword");
 		
