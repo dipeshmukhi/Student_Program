@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN''http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
-<sqlMap namespace="Student">
-
-	<typeAlias type = "edu.student.model.User" alias = "user"/>
+<mapper>
+	<typeAlias alias = "user" type = "edu.student.model.User" />
 	
-	<resultMap id = "result" class = "user" autoMapping="true">
+	<resultMap id = "result" type = "user" autoMapping="false">
+		 <result property = "userId" column = "Id"/>
+       <result property = "userName" column = "UserName"/>
+       <result property = "password" column = "Password"/>
+       <result property = "firstName" column = "First Name"/>
+       <result property = "lastName" column = "Last Name"/>
+       <result property = "emailId" column = "Email"/>
+       <result property = "phone" column = "Phone"/>
+       <result property = "type" column = "Type"/>
+       <result property = "lastModifiedDate" column = "Last Modified"/>
 	</resultMap>
 	
-	<select id="getAllUser" resultMap="java.util.List">
+	<select id="getAllUser" resultType="java.util.List">
 		select * from Users
 	</select>
 	
-	<select id="getUserById" parameterClass="Integer" resultMap="result">
-		select * from Users where Id = #userId#
+	<select id="getUserById" parameterType="Integer" resultType="result">
+		select * from Users where Id = #{userId}
 	</select>
 	
-	<delete id="deleteUser" parameterClass="user">
-		delete from Users where Id = #userId#
+	<delete id="deleteUser" parameterType="user">
+		delete from Users where Id = #{userId}
 	</delete>
 
-</sqlMap>
+</mapper>

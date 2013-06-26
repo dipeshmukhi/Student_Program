@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.taglibs.standard.tag.common.sql.DataSourceWrapper;
-import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -46,7 +46,10 @@ public class CheckLogin extends HttpServlet {
 	{
 		HttpSession session = request.getSession();
 		ApplicationContext factory= new ClassPathXmlApplicationContext("spring.xml");
-		SqlSessionFactoryBean sqlSessionFactory = (SqlSessionFactoryBean) factory.getBean("sqlSessionFactory");
+		SqlSessionTemplate sqlSession = (SqlSessionTemplate) factory.getBean("sqlSession");
+		
+		Integer userId=1;
+		User temp = (User) sqlSession.selectOne("edu.student.model.User.getUserById", userId);
 		
 		
 		String lUserName=request.getParameter("txtUserName");
