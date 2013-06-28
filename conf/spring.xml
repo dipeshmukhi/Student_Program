@@ -6,12 +6,13 @@
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
-							http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
-							http://activemq.apache.org/schema/core http://activemq.org/config/1.0/1.0.xsd
-							http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-							http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
- 
+							  http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+							  http://activemq.apache.org/schema/core http://activemq.org/config/1.0/1.0.xsd
+							  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+							  http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
+	
 	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" destroy-method="close">
 			<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 			<property name="url" value="jdbc:mysql://localhost:3306/Dipesh"/>
@@ -19,14 +20,19 @@
 			<property name="password" value="Dip_mukh99"/>
 	</bean>
 	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  			<property name="dataSource" ref="dataSource" />
+	</bean>
+	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 			<property name="dataSource" ref="dataSource" />
-			<property name="mapperLocations" value="classpath*:edu/student/model/**/*.xml" />
-			<property name="configLocation" value="MyBatisSpringConfig/MyBatisConfig.xml" />
+			<property name="mapperLocations" value="classpath:edu/student/model/**/*.xml" />
+			<property name="configLocation" value="classpath:MyBatisConfig.xml" />
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
    		<constructor-arg index="0" ref="sqlSessionFactory" />
+   		<constructor-arg index="1" value="BATCH" />
 	</bean>
     
 </beans>

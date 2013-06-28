@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
-<mapper>
-	<typeAlias alias = "user" type = "edu.student.model.User" />
+<mapper namespace="User">
 	
-	<resultMap id = "result" type = "user" autoMapping="false">
+	<resultMap id = "result" type = "User" autoMapping="false">
 		 <result property = "userId" column = "Id"/>
        <result property = "userName" column = "UserName"/>
        <result property = "password" column = "Password"/>
@@ -20,11 +19,11 @@
 		select * from Users
 	</select>
 	
-	<select id="getUserById" parameterType="Integer" resultType="result">
+	<select id="getUserById" parameterType="Integer" resultMap="result">
 		select * from Users where Id = #{userId}
 	</select>
 	
-	<delete id="deleteUser" parameterType="user">
+	<delete id="deleteUser" parameterType="User">
 		delete from Users where Id = #{userId}
 	</delete>
 
