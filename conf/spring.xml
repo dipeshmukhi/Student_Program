@@ -34,5 +34,9 @@
    		<constructor-arg index="0" ref="sqlSessionFactory" />
    		<constructor-arg index="1" value="BATCH" />
 	</bean>
+	
+	<bean id="userService" class="edu.student.model.User.UserServiceImpl">
+			<property name="sqlSession" ref="sqlSession"/>
+	</bean>
     
 </beans>

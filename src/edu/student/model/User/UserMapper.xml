@@ -7,21 +7,28 @@
 		 <result property = "userId" column = "Id"/>
        <result property = "userName" column = "UserName"/>
        <result property = "password" column = "Password"/>
-       <result property = "firstName" column = "First Name"/>
-       <result property = "lastName" column = "Last Name"/>
+       <result property = "firstName" column = "First_Name"/>
+       <result property = "lastName" column = "Last_Name"/>
        <result property = "emailId" column = "Email"/>
        <result property = "phone" column = "Phone"/>
        <result property = "type" column = "Type"/>
        <result property = "lastModifiedDate" column = "Last Modified"/>
 	</resultMap>
 	
-	<select id="getAllUser" resultType="java.util.List">
+	<select id="getAllUser" resultMap="result">
 		select * from Users
 	</select>
 	
 	<select id="getUserById" parameterType="Integer" resultMap="result">
 		select * from Users where Id = #{userId}
 	</select>
+	
+	<insert id="insertUser" parameterType="User">
+		insert into Users 
+			(UserName,Password,First_Name,Last_Name,Email,Phone,Type,LastModifiedDate) 
+		values 
+			(#{userName},#{password},#{firstName},#{lastName},#{emailId},#{phone},#{type},SYSDATE())
+	</insert>
 	
 	<delete id="deleteUser" parameterType="User">
 		delete from Users where Id = #{userId}

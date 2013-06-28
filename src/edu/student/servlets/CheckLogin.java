@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
 import org.apache.taglibs.standard.tag.common.sql.DataSourceWrapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import edu.student.model.Connect;
 import edu.student.model.User.User;
+import edu.student.model.User.UserService;
 
 /**
  * Servlet implementation class CheckLogin
@@ -45,11 +46,11 @@ public class CheckLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		HttpSession session = request.getSession();
-		ApplicationContext factory= new ClassPathXmlApplicationContext("spring.xml");
-		SqlSession sqlSession = (SqlSession) factory.getBean("sqlSession");
+		ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
 		
-		Integer userId=1;
-		User temp = (User) sqlSession.selectOne("User.getUserById", userId);
+		UserService user = (UserService) context.getBean("userService");
+		List<User> temp = user.getAllUser();
+		
 		
 		String lUserName=request.getParameter("txtUserName");
 		String lPassword=request.getParameter("txtPassword");

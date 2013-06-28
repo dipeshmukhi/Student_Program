@@ -7,7 +7,7 @@ public interface UserService
 {
 	public void insertUser(User user);
 	
-	public void getUserById(Integer userId);
+	public User getUserById(Integer userId);
 	
 	public List<User> getAllUser();
 	
