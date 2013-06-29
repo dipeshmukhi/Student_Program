@@ -5,7 +5,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +49,10 @@ public class CheckLogin extends HttpServlet {
 	{
 		HttpSession session = request.getSession();
 		ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
+		
+		Map<String, String> lCredentials = new HashMap<String, String>();
+		lCredentials.put("userName",request.getParameter("txtUserName"));
+		lCredentials.put("password",request.getParameter("txtPassword"));
 		
 		UserService user = (UserService) context.getBean("userService");
 		List<User> temp = user.getAllUser();

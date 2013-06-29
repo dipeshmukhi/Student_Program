@@ -12,7 +12,7 @@
        <result property = "emailId" column = "Email"/>
        <result property = "phone" column = "Phone"/>
        <result property = "type" column = "Type"/>
-       <result property = "lastModifiedDate" column = "Last Modified"/>
+       <result property = "lastModifiedDate" column = "LastModifiedDate"/>
 	</resultMap>
 	
 	<select id="getAllUser" resultMap="result">
@@ -29,6 +29,27 @@
 		values 
 			(#{userName},#{password},#{firstName},#{lastName},#{emailId},#{phone},#{type},SYSDATE())
 	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		update Users
+		set 
+			UserName=#{userName},
+			Password=#{password},
+			First_Name=#{firstName},
+			Last_Name=#{lastName},
+			Email=#{emailId},
+			Phone=#{phone}
+			Type=#{type},
+			LastModifiedDate=#{lastModifiedDate}
+		where
+			Id=#{userId}	
+	</update>
+	
+	<select id="getUserLogin" parameterType="java.util.Map" resultMap="result">
+		select * from Users
+		where
+			UserName=#{userName} and Password=#{password}
+	</select>
 	
 	<delete id="deleteUser" parameterType="User">
 		delete from Users where Id = #{userId}

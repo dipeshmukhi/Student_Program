@@ -9,9 +9,11 @@ public interface UserService
 	
 	public User getUserById(Integer userId);
 	
+	public User getUserLogin(User pUser);
+	
 	public List<User> getAllUser();
 	
 	public void updateUser(User user);
 	
-	public void deleteUser(Integer userId);
+	public void deleteUser(User user);
 }

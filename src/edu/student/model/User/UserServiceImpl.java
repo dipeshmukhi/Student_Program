@@ -32,15 +32,21 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-	public void updateUser(User pUser) {
-		// TODO Auto-generated method stub
-
+	public void updateUser(User pUser) 
+	{
+		sqlSession.insert("User.updateUser", pUser);
 	}
 
 	@Override
-	public void deleteUser(Integer pUserId) {
-		// TODO Auto-generated method stub
-
+	public void deleteUser(User pUser) 
+	{
+		sqlSession.insert("User.deleteUser", pUser);
 	}
+
+	@Override
+   public User getUserLogin(User pUser)
+	{
+	   return ((User)sqlSession.selectOne("User.getUserLogin", pUser));
+   }
 
 }
