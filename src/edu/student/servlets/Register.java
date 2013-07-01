@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import edu.student.model.User.UserService;
+
 /**
  * Servlet implementation class Register
  */
@@ -28,8 +30,9 @@ public class Register extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		response.sendRedirect("/Student_Program/index.jsp");
 	}
 
 	/**
@@ -38,9 +41,30 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		HttpSession session = request.getSession();
-		session.getAttribute("myDataSource");
-		ApplicationContext factory = new ClassPathXmlApplicationContext("Beans.xml");
-		factory.getBean("");
+		ApplicationContext context;
+		if(session.getAttribute("context")==null)
+		{
+			context = new ClassPathXmlApplicationContext("spring.xml");
+		}
+		else
+		{
+			context=(ApplicationContext) session.getAttribute("context");
+		}
+		UserService user= (UserService)context.getBean("userService");
+		
+		edu.student.model.User.User newUser = new edu.student.model.User.User();
+		newUser.setFirstName(request.getParameter("txtFirstName"));
+		newUser.setLastName(request.getParameter("txtLastName"));
+		newUser.setEmailId(request.getParameter("txtEmailId"));
+		newUser.setPhone(request.getParameter("txtPhone"));
+		newUser.setUserName(request.getParameter("txtUserName"));
+		newUser.setPassword(request.getParameter("txtPassword"));
+		
+		user.insertUser(newUser);
+		session.setAttribute("returnMessage", "Registered Successfully !!!");
+		
+		response.sendRedirect("/Student_Program/index.jsp");
+		
 	}
 
 }

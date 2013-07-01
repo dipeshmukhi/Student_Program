@@ -40,7 +40,7 @@
 			Email=#{emailId},
 			Phone=#{phone}
 			Type=#{type},
-			LastModifiedDate=#{lastModifiedDate}
+			LastModifiedDate=SYSDATE()
 		where
 			Id=#{userId}	
 	</update>

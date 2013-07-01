@@ -19,7 +19,7 @@
 		       <jsp:forward page="<%=response.encodeURL(\"/Student/StudentMainPage.jsp\")%>"></jsp:forward>
 		   </c:when>
 		   <c:when test="${fn:toLowerCase(sessionScope.currentUser.type)==\"professor\"}">
-		       <jsp:forward page="<%=response.encodeURL(\"/temp.jsp\")%>"></jsp:forward>
+		       <jsp:forward page="<%=response.encodeURL(\"/Professor/ProfessorMainPage.jsp\")%>"></jsp:forward>
 		   </c:when>
 		   <c:otherwise>
 		   </c:otherwise>

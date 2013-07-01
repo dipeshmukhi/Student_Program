@@ -11,26 +11,25 @@
 <html>
 
 <head>
-<title>Insert title here</title>
+<title>Register Form</title>
 </head>
 <body>
 
 	<center>
-	<h4>${sessionScope.returnMessage}</h4>
-	<c:set var="returnMessage" value="" scope="session"></c:set>
 	<h2>Student Register</h2>
-	<form action="Register" method="post" id="login_form">
+	<form action="Register" method="post" id="RegisterForm">
 	
-		<h4>First Name: <input type="text" name="txtFirstName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
-		<h4>Last Name: <input type="text" name="txtLastName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
-		<h4>Email Id: <input type="text" name="txtEmailId" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
+		<h4>First Name*: <input type="text" name="txtFirstName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
+		<h4>Last Name*: <input type="text" name="txtLastName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
+		<h4>Email Id*: <input type="text" name="txtEmailId" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
 		<h4>Phone: <input type="text" name="txtPhone" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
 	
-		<h4>User Name: <input type="text" name="txtUserName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
-		<h4>Password: <input type="password" name="txtPassword" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
-		<h4>Re-confirm Password: <input type="password" name="txtRePassword" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
+		<h4>User Name*: <input type="text" name="txtUserName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
+		<h4>Password*: <input type="password" name="txtPassword" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
+		<h4>Re-confirm Password*: <input type="password" name="txtRePassword" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
 		
 		<button type="button" onclick="validate(this.form)">Submit</button>
+		<button type="reset">Reset</button>
 	</form>
 
 </body>

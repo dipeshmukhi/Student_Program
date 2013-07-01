@@ -1,6 +1,7 @@
 package edu.student.model.User;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -44,9 +45,9 @@ public class UserServiceImpl implements UserService
 	}
 
 	@Override
-   public User getUserLogin(User pUser)
+   public User getUserLogin(Map pCredentials)
 	{
-	   return ((User)sqlSession.selectOne("User.getUserLogin", pUser));
+	   return ((User)sqlSession.selectOne("User.getUserLogin", pCredentials));
    }
 
 }
