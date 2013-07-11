@@ -13,19 +13,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="Reset" method="post" id="reset_form">
+	<form action="Reset" method="post" id="ResetForm">
 		<h4>Registered Email: <input type="text" name="txtEmailId" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>
 		<button type="button" onclick="validate(this.form)">Submit</button>
-	</form>
-	
-
-	<c:if test="${session.myData==null}">
-		<sql:setDataSource var="myData" driver="com.mysql.jdbc.Driver"
-						    url="jdbc:mysql://localhost:3306/Dipesh"
-						    user="root"  password="Dip_mukh99"
-						    scope="session"/>
-	</c:if>
-		
+	</form>		
 </body>
 
 <script type="text/javascript">
@@ -33,7 +24,7 @@
 	{
 		if(form.txtEmailId.value=="")
 		{
-			alert("Please fill in your registered Email Id.");
+			alert("Please provide your registered Email Id.");
 			form.txtEmailId.focus();
 		}		
 		else
