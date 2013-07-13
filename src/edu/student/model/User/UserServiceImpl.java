@@ -31,6 +31,12 @@ public class UserServiceImpl implements UserService
 	{
 		return (sqlSession.selectList("User.getAllUser"));
 	}
+	
+	@Override
+   public User isUserPresent(User pUser) 
+	{	
+	   return ((User)sqlSession.selectOne("User.isUserPresent",pUser));
+   }
 
 	@Override
 	public void updateUser(User pUser) 

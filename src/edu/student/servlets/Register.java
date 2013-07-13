@@ -50,15 +50,17 @@ public class Register extends HttpServlet {
 		{
 			context=(ApplicationContext) session.getAttribute("context");
 		}
-		UserService user= (UserService)context.getBean("userService");
-		
+		UserService user= (UserService)context.getBean("userService");		
 		edu.student.model.User.User newUser = new edu.student.model.User.User();
+		
+		newUser.setUserName(request.getParameter("txtUserName"));
+		
+		newUser.setPassword(request.getParameter("txtPassword"));		
 		newUser.setFirstName(request.getParameter("txtFirstName"));
 		newUser.setLastName(request.getParameter("txtLastName"));
 		newUser.setEmailId(request.getParameter("txtEmailId"));
 		newUser.setPhone(request.getParameter("txtPhone"));
-		newUser.setUserName(request.getParameter("txtUserName"));
-		newUser.setPassword(request.getParameter("txtPassword"));
+		
 		
 		user.insertUser(newUser);
 		session.setAttribute("returnMessage", "Registered Successfully !!!");

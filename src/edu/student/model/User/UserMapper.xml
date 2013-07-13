@@ -23,6 +23,10 @@
 		select * from Users where Id = #{userId}
 	</select>
 	
+	<select id="isUserPresent" parameterType="User" resultMap="result">
+		select * from Users where UserName=#{userName}
+	</select>
+	
 	<insert id="insertUser" parameterType="User">
 		insert into Users 
 			(UserName,Password,First_Name,Last_Name,Email,Phone,Type,LastModifiedDate) 

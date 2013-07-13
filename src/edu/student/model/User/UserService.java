@@ -10,6 +10,8 @@ public interface UserService
 	
 	public User getUserById(Integer userId);
 	
+	public User isUserPresent(User user);
+	
 	public User getUserLogin(Map pCredentials);
 	
 	public List<User> getAllUser();
