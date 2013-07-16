@@ -17,6 +17,8 @@
 
 	<center>
 	<h2>Student Register</h2>
+	<h4>${sessionScope.returnMessage}</h4>
+	<c:set var="returnMessage" value="" scope="session"></c:set>
 	<form action="Register" method="post" id="RegisterForm">
 	
 		<h4>First Name*: <input type="text" name="txtFirstName" value="" onkeydown="if (event.keyCode == 13) {validate(this.form);}"></h4>

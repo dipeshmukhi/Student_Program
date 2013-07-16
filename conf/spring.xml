@@ -14,10 +14,14 @@
 							  http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd">
 	
 	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" destroy-method="close">
-			<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-			<property name="url" value="jdbc:mysql://localhost:3306/Dipesh"/>
-			<property name="username" value="root"/>
-			<property name="password" value="Dip_mukh99"/>
+			<property name="driverClassName" value="${database.driverClassName}"/>
+			<property name="url" value="${database.url}"/>
+			<property name="username" value="${database.username}"/>
+			<property name="password" value="${database.password}"/>
+	</bean>
+	
+	<bean id="props" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:*.properties"/>
 	</bean>
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

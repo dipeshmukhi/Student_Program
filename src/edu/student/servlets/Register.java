@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DuplicateKeyException;
 
 import edu.student.model.User.UserService;
 
@@ -42,31 +43,40 @@ public class Register extends HttpServlet {
 	{
 		HttpSession session = request.getSession();
 		ApplicationContext context;
+		
 		if(session.getAttribute("context")==null)
 		{
 			context = new ClassPathXmlApplicationContext("spring.xml");
+			session.setAttribute("context", context);
 		}
 		else
 		{
 			context=(ApplicationContext) session.getAttribute("context");
 		}
+		
 		UserService user= (UserService)context.getBean("userService");		
 		edu.student.model.User.User newUser = new edu.student.model.User.User();
 		
-		newUser.setUserName(request.getParameter("txtUserName"));
-		
+		newUser.setUserName(request.getParameter("txtUserName"));		
 		newUser.setPassword(request.getParameter("txtPassword"));		
 		newUser.setFirstName(request.getParameter("txtFirstName"));
 		newUser.setLastName(request.getParameter("txtLastName"));
 		newUser.setEmailId(request.getParameter("txtEmailId"));
 		newUser.setPhone(request.getParameter("txtPhone"));
 		
+		try
+		{
+			user.insertUser(newUser);
+		}
+		catch(DuplicateKeyException exception)
+		{
+			session.setAttribute("returnMessage", "UserName/Email already present");
+			response.sendRedirect("/Student_Program/Register.jsp");
+			return;
+		}
 		
-		user.insertUser(newUser);
-		session.setAttribute("returnMessage", "Registered Successfully !!!");
-		
-		response.sendRedirect("/Student_Program/index.jsp");
-		
+		session.setAttribute("returnMessage", "Registered Successfully !!!");		
+		response.sendRedirect("/Student_Program/index.jsp");		
 	}
 
 }
