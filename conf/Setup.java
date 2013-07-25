@@ -1,23 +1,28 @@
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.Properties;
 
 
 public class Setup 
-{
-	String fileLocation=this.getClass().getResource("Setup.properties").toString().substring(6).replace("%20"," ");
-	
-	public static void main(String[] args)
+{	
+	public static void main(String[] args) throws FileNotFoundException
 	{	
 		Properties properties = new Properties();
 		Setup set= new Setup();
+		InputStream in = set.getClass().getResourceAsStream("Setup.properties");
+		FileOutputStream out = new FileOutputStream("Setup.properties");
 		try
-		{	
-			File file= new File(set.fileLocation);
-			properties.load(new FileInputStream(file));
+		{			
+			properties.load(in);
+			System.out.println(properties.getProperty("database.driverClassName"));
 			System.out.println(properties.getProperty("database.url"));
     		System.out.println(properties.getProperty("database.username"));
     		System.out.println(properties.getProperty("database.password"));
+    		
+    		properties.clear();
+    		properties.setProperty("database.password", "fcgnjdf");
+    		properties.store(out, "");
 		}
 		catch(Exception e)
 		{System.out.println(""+e.getMessage());}

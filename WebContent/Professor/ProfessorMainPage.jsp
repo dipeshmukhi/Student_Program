@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Professor Main Page</title>
 </head>
-<body>
-professor main page
-</body>
+		<frameset rows="10%">
+		<frame src="index.jsp" name="frame1"scrolling="yes">
+		<frameset cols="20%,*" NORESIZE>
+		<frame src="Register.jsp" name="frame2" NORESIZE>
+		<frame src="NewFile.jsp" name="frame3">
+		</frameset>
+		</frameset>
 </html>
