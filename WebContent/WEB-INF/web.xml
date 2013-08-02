@@ -34,6 +34,7 @@
   </error-page>
   <error-page>
     <error-code>500</error-code>
+    <exception-type>Exception</exception-type>
     <location>/ErrorPages/Error_Page.jsp</location>
   </error-page>
   <error-page>
