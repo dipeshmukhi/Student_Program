@@ -1,0 +1,9 @@
+li{
+	padding-right: 50px;
+	display:inline;
+}
+
+ul li img{
+	height: 25px;
+	width: 25px
+}
