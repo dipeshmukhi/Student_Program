@@ -1,10 +1,7 @@
 $(document).ready(function() {
-	$("#mybutton").click(function(){
-		$("#mylabel + input").val("Hello this is from JS");
-	});
-	
-	$(":text").dblclick(function() {
-		$(this).val("ngfgfgnf");
-	});
-	
-});
+	$("h2").click(
+	function(){
+		$(this).toggleClass("minus");
+		$(this).next().slideToggle(400);
+	});	//end click
+}); //end ready
