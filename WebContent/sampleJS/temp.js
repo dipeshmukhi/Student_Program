@@ -1,35 +1,32 @@
-var $=function(id){
-	return document.getElementById(id);
-};
-
-window.onload= function(){
-	var listNode=$("imageList");
-	var captionNode = $("caption");
-	var imageNode=$("imageNode");
+$(document).ready(function(){
+	var imageCache = [];
+	$("img").each(function(){
+		var image = new Image();
+		image.src = $(this).attr("src");
+		image.title=$(this).attr("alt");
+		imageCache.push(image);
+	});
 	
-	var imageLinks = document.getElementsByTagName("a");
+	$("h1").click(function(){
+		$(this).animate(
+				{ fontSize: "+=100" , opacity: 1, left: "175" },
+				  2000).
+				  animate(
+							{ fontSize: "-=50" , opacity: 1, left: "175" },
+							  2000
+							);
+	});
 	
-	var i , linkNode, image;
-	for(i=0;i<imageLinks.length;i++)
-	{
-		linkNode=imageLinks[i];		
-		linkNode.onclick = function(evt){
-			
-			var link = this;
-			imageNode.src=link.getAttribute("href");
-			captionNode.firstChild.nodeValue=link.getAttribute("title");
-			
-			if(!evt){evt=window.event;}
-			if(evt.preventDefault){
-				evt.preventDefault();
-			}
-			else{
-				evt.returnValue=false;
-			}
-			
-			image=new Image();
-			image.src=linkNode.getAttribute("href");
-		};
-	}
-	$("firstLink").focus();
-};
+	
+	var imageCounter=0;
+	var currentImage;
+	setInterval(function(){
+		$("#caption").fadeOut(1000);
+		$("#main").fadeOut(1000, function(){
+			imageCounter=(imageCounter +1) % imageCache.length;
+			currentImage = imageCache[imageCounter];
+			$("#caption").text(" " +imageCounter).fadeIn(1000);
+			$("#main").attr("src",currentImage.src).fadeIn(1000);			
+		});
+	}, 3000);
+});
