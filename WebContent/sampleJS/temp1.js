@@ -1,7 +1,13 @@
-$(document).ready(function() {
-	$("h2").click(
-	function(){
-		$(this).toggleClass("minus");
-		$(this).next().slideToggle(400);
-	});	//end click
-}); //end ready
+$(document).ready(function(){
+	$("#imageList a").hover(
+			function(event){
+				event.preventDefault();
+				$(this).stop(true).animate({top:15},"fast");
+			},
+			function(event){
+				event.preventDefault();
+				$(this).stop(true).animate({top:0},"fast");
+			}
+	);
+});
+
