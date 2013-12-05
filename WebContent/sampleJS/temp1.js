@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 	$("#imageList a").hover(
 			function(event){
 				event.preventDefault();
@@ -11,3 +11,15 @@ $(document).ready(function(){
 	);
 });
 
+*/
+
+$(document).ready(function(){
+	$("#memberform").validate({
+		rules:{
+			temp:{
+				required:true,
+				email:true
+			}
+		}
+	});
+});
